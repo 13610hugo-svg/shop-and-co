@@ -1,0 +1,390 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="SHOP&CO : des boutiques à découvrir, réunies au même endroit. Découvrez les produits de nos boutiques partenaires.">
+<title>SHOP&CO – Découvrez de nouvelles boutiques</title>
+
+<style>
+:root {
+  --navy: #172B50;
+  --yellow: #F2C342;
+  --white: #FFFFFF;
+  --light: #F5F6F8;
+  --text: #202938;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: Arial, sans-serif;
+  color: var(--text);
+  background: white;
+}
+
+header {
+  height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 7%;
+  border-bottom: 1px solid #eee;
+  background: white;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--navy);
+  font-size: 25px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.logo span { color: var(--yellow); }
+
+.symbol {
+  width: 34px;
+  height: 34px;
+  border: 5px solid var(--navy);
+  border-radius: 10px;
+  position: relative;
+  transform: rotate(45deg);
+}
+
+.symbol::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: var(--yellow);
+  right: -7px;
+  bottom: -7px;
+  border-radius: 3px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+nav a {
+  color: var(--navy);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+nav a:hover { color: #B68B19; }
+
+.hero {
+  background: var(--navy);
+  color: white;
+  padding: 100px 8%;
+  text-align: center;
+}
+
+.hero .tag {
+  display: inline-block;
+  color: var(--yellow);
+  border: 1px solid #65738E;
+  border-radius: 30px;
+  padding: 9px 17px;
+  font-size: 12px;
+  margin-bottom: 27px;
+  letter-spacing: 1px;
+}
+
+.hero h1 {
+  font-size: clamp(36px, 6vw, 62px);
+  line-height: 1.15;
+  max-width: 850px;
+  margin: auto;
+}
+
+.hero h1 span { color: var(--yellow); }
+
+.hero p {
+  color: #D5DCE8;
+  font-size: 17px;
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 25px auto 32px;
+}
+
+.button {
+  display: inline-block;
+  padding: 16px 27px;
+  border-radius: 7px;
+  text-decoration: none;
+  font-weight: bold;
+  background: var(--yellow);
+  color: var(--navy);
+  transition: .2s;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  background: #ffda70;
+}
+
+section { padding: 75px 8%; }
+
+.section-title {
+  text-align: center;
+  margin-bottom: 42px;
+}
+
+.section-title h2 {
+  color: var(--navy);
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.section-title p {
+  color: #77808D;
+  font-size: 15px;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.product {
+  border: 1px solid #E8EAF0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: white;
+  transition: .25s;
+}
+
+.product:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px #172B5015;
+}
+
+.product-image {
+  height: 220px;
+  background: var(--light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #929BAA;
+  font-size: 13px;
+}
+
+.product-info { padding: 20px; }
+
+.product-info h3 {
+  color: var(--navy);
+  margin-bottom: 9px;
+}
+
+.product-info p {
+  color: #78818E;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.product-info .more {
+  display: inline-block;
+  margin-top: 16px;
+  color: var(--navy);
+  font-weight: bold;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.catalogue {
+  text-align: center;
+  padding-top: 0;
+}
+
+.catalogue .button {
+  background: var(--navy);
+  color: white;
+}
+
+.about {
+  background: var(--light);
+  text-align: center;
+}
+
+.about p {
+  max-width: 680px;
+  margin: 20px auto 0;
+  color: #647080;
+  line-height: 1.8;
+}
+
+.contact {
+  text-align: center;
+}
+
+footer {
+  background: var(--navy);
+  color: white;
+  padding: 35px 8%;
+  text-align: center;
+}
+
+footer p {
+  color: #C7CFDC;
+  font-size: 13px;
+  margin-top: 12px;
+}
+
+footer a {
+  color: var(--yellow);
+  text-decoration: none;
+}
+
+@media(max-width: 750px) {
+  header { padding: 0 5%; height: 68px; }
+  nav { gap: 12px; }
+  nav a { font-size: 12px; }
+  .products { grid-template-columns: repeat(2, 1fr); }
+  .hero { padding: 75px 6%; }
+}
+
+@media(max-width: 480px) {
+  nav { gap: 10px; }
+  nav a { font-size: 11px; }
+  .logo { font-size: 20px; }
+  .symbol { width: 27px; height: 27px; }
+  .products { grid-template-columns: 1fr; }
+  section { padding: 55px 6%; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="#" class="logo">
+    <div class="symbol"></div>
+    SHOP<span>&CO</span>
+  </a>
+
+  <nav>
+    <a href="#">Accueil</a>
+    <a href="#produits">Produits</a>
+    <a href="#apropos">À propos</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="tag">DÉCOUVREZ NOS BOUTIQUES PARTENAIRES</div>
+
+  <h1>
+    Des boutiques à découvrir,
+    <span>réunies au même endroit.</span>
+  </h1>
+
+  <p>
+    Découvrez une sélection de produits proposés par
+    des boutiques indépendantes et trouvez facilement
+    vos prochaines découvertes.
+  </p>
+
+  <a href="#produits" class="button">
+    Découvrir les produits
+  </a>
+</section>
+
+<section id="produits">
+  <div class="section-title">
+    <h2>Nos produits à découvrir</h2>
+    <p>Une sélection de produits issus de nos boutiques partenaires.</p>
+  </div>
+
+  <div class="products">
+
+    <article class="product">
+      <div class="product-image">Photo du produit</div>
+      <div class="product-info">
+        <h3>Produit partenaire 1</h3>
+        <p>La présentation de ce produit sera ajoutée prochainement.</p>
+        <a href="#contact" class="more">Découvrir le produit →</a>
+      </div>
+    </article>
+
+    <article class="product">
+      <div class="product-image">Photo du produit</div>
+      <div class="product-info">
+        <h3>Produit partenaire 2</h3>
+        <p>La présentation de ce produit sera ajoutée prochainement.</p>
+        <a href="#contact" class="more">Découvrir le produit →</a>
+      </div>
+    </article>
+
+    <article class="product">
+      <div class="product-image">Photo du produit</div>
+      <div class="product-info">
+        <h3>Produit partenaire 3</h3>
+        <p>La présentation de ce produit sera ajoutée prochainement.</p>
+        <a href="#contact" class="more">Découvrir le produit →</a>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<div class="catalogue">
+  <a href="#produits" class="button">Voir tous les produits</a>
+</div>
+
+<section class="about" id="apropos">
+  <div class="section-title">
+    <h2>Bienvenue chez SHOP&CO</h2>
+  </div>
+  <p>
+    SHOP&CO a pour objectif de faire découvrir des boutiques
+    indépendantes et leurs produits. Retrouvez leurs articles
+    dans un seul endroit et accédez directement à leur boutique
+    pour effectuer vos achats.
+  </p>
+</section>
+
+<section class="contact" id="contact">
+  <div class="section-title">
+    <h2>Vous êtes une boutique ?</h2>
+    <p>Vous souhaitez présenter vos produits sur SHOP&CO ?</p>
+  </div>
+  <a href="mailto:contact@exemple.fr" class="button">
+    Nous contacter
+  </a>
+</section>
+
+</main>
+
+<footer>
+  <a href="#" class="logo" style="justify-content:center;color:white">
+    SHOP<span>&CO</span>
+  </a>
+  <p>Des boutiques à découvrir, réunies au même endroit.</p>
+  <p>© 2026 SHOP&CO – Tous droits réservés.</p>
+</footer>
+
+</body>
+</html>
